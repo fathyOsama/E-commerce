@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product")
@@ -42,11 +43,11 @@ public class Product {
     @Column(name = "units_in_stock")
     private int unitsInStock;
 
-    @Column(name = "data_created")
+    @Column(name = "date_created")
     @CreationTimestamp
-    private Data dataCreated;
+    private LocalDateTime dataCreated;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
-    private Data lastUpdated;
+    private LocalDateTime  lastUpdated;
 }
