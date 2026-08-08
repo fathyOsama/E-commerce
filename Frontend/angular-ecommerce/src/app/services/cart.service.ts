@@ -14,7 +14,7 @@ export class CartService {
 
   constructor() { }
 
-  addTocart(theCartItem: CartItem) {
+  addToCart(theCartItem: CartItem) {
 
     // check if we already have the item in our cart
     let alreadyExistsIncart: boolean = false;
