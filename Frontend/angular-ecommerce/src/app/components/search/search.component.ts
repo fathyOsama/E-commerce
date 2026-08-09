@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
 
   doSearch(value: string) {
