@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
+  isLoading: boolean = true;
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
   searchMode: boolean = false;
@@ -38,6 +39,8 @@ export class ProductListComponent implements OnInit {
   }
 
   listProducts() {
+
+    this.isLoading = true;
 
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
@@ -119,6 +122,7 @@ export class ProductListComponent implements OnInit {
       this.thePageNumber = data.page.number + 1;
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements;
+      this.isLoading = false;
     };
   }
 
