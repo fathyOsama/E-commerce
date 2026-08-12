@@ -44,8 +44,10 @@
 
                 </div>
 
-                <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm mt-2">Remove</button>
+              </div>
 
+              <div class="col-8">
+                <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm mt-2">Remove</button>
               </div>
 
               <p class="mt-2">Subtotal: {{ tempCartItem.quantity * tempCartItem.unitPrice | currency: 'USD' }}</p>
@@ -58,7 +60,11 @@
               <p>Total Quantity: {{ totalQuantity }}</p>
               <p>Shipping: FREE</p>
               <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
-              <button routerLink="/checkout" class="btn btn-primary">Checkout</button>
+
+              <div class="col-8">
+                <a routerLink="/checkout" class="btn btn-primary">Checkout</a>
+              </div>
+
             </td>
           </tr>
 
