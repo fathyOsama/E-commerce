@@ -6,12 +6,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent implements OnInit{
+export class CheckoutComponent implements OnInit {
 
+  checkoutFormGroup!: FormGroup;
+  totalPrice: number = 0;
+  totalQuantity: number = 0;
 
- checkoutFormGroup!: FormGroup;
-
-  constructor (
+  constructor(
     private formBuilder: FormBuilder
   ) {}
 
@@ -21,8 +22,40 @@ export class CheckoutComponent implements OnInit{
         firstName: [''],
         lastName: [''],
         email: ['']
+      }),
+      shippingAddress: this.formBuilder.group({
+        street: [''],
+        city: [''],
+        state: [''],
+        country: [''],
+        zipCode: [''],
+      }),
+      billingAddress: this.formBuilder.group({
+        country: [''],
+        street: [''],
+        city: [''],
+        state: [''],
+        zipCode: [''],
+      }),
+      creditCard: this.formBuilder.group({
+        cardType: [''],
+        nameOnCard: [''],
+        cardNumber: [''],
+        securityCode: [''],
+        expirationMonth: [''],
+        expirationYear: [''],
       })
     });
+  }
+
+  copyShippingAddressToBillingAddress(event: Event) {
+    if ((event.target as HTMLInputElement).checked) {
+      this.checkoutFormGroup.controls['billingAddress']
+        .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
+    }
+    else {
+      this.checkoutFormGroup.controls['billingAddress'].reset();
+    }
   }
 
   onSubmit() {
