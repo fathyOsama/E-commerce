@@ -23,5 +23,7 @@ public class Country {
     @Column(name = "name")
     private String name;
 
+    @OneToMany(mappedBy = "country")
+    private List<State> states;
 
 }
