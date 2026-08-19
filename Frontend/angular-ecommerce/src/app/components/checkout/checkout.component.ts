@@ -78,10 +78,13 @@ export class CheckoutComponent implements OnInit {
         )
       }),
       creditCard: this.formBuilder.group({
-        cardType: [''],
-        nameOnCard: [''],
-        cardNumber: [''],
-        securityCode: [''],
+        cardType: new FormControl('', [Validators.required]),
+        nameOnCard: new FormControl('',
+                               [Validators.required, Validators.minLength(2),
+                               Luv2ShopValidators.notOnlyWhitespace]
+        ),
+        cardNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]{16}')]),
+        securityCode: new FormControl('', [Validators.required, Validators.pattern('[0-9]{4}')]),
         expirationMonth: [''],
         expirationYear: [''],
       })
@@ -118,6 +121,8 @@ export class CheckoutComponent implements OnInit {
 
   }
 
+  // customer
+
   get firstName() {
     return this.checkoutFormGroup.get('customer.firstName');
   }
@@ -129,6 +134,8 @@ export class CheckoutComponent implements OnInit {
   get email() {
     return this.checkoutFormGroup.get('customer.email');
   }
+
+  // shippingAddress
 
   get shippingAddressStreet() {
     return this.checkoutFormGroup.get('shippingAddress.street');
@@ -150,6 +157,8 @@ export class CheckoutComponent implements OnInit {
     return this.checkoutFormGroup.get('shippingAddress.zipCode');
   }
 
+  // billingAddress
+
   get billingAddressStreet() {
     return this.checkoutFormGroup.get('billingAddress.street');
   }
@@ -168,6 +177,24 @@ export class CheckoutComponent implements OnInit {
 
   get billingAddressZipCode() {
     return this.checkoutFormGroup.get('billingAddress.zipCode');
+  }
+
+  // creditCard
+
+  get creditCardType() {
+    return this.checkoutFormGroup.get('creditCard.cardType');
+  }
+
+  get creditCardNameOnCard() {
+    return this.checkoutFormGroup.get('creditCard.nameOnCard');
+  }
+
+  get creditCardNumber() {
+    return this.checkoutFormGroup.get('creditCard.cardNumber');
+  }
+
+  get creditCardSecurityCode() {
+    return this.checkoutFormGroup.get('creditCard.securityCode');
   }
 
   copyShippingAddressToBillingAddress(event: Event) {
