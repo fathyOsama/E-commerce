@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
 @RepositoryRestResource
-public interface StateRepository extends JpaRepository<State,Integer> {
+public interface StateRepository extends JpaRepository<State,Long> {
 
     List<State> findByCountryCode(@Param("code") String code);
 }
