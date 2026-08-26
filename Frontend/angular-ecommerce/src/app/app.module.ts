@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
@@ -15,10 +14,18 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
 
+import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from '@auth0/auth0-angular';
+
+import myAppConfig from './config/my-app-config';
 
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+
   { path: 'checkout', component: CheckoutComponent},
   { path: 'cart-details', component: CartDetailsComponent},
   { path: 'products/:id', component: ProductDetailsComponent},
@@ -39,16 +46,26 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent,
+    LoginStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule.forRoot({
+      ...myAppConfig.auth,
+      httpInterceptor: {
+        ...myAppConfig.httpInterceptor,
+      },
+    }),
   ],
-  providers: [ProductService],
+  providers: [
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
