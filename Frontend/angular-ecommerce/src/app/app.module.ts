@@ -20,10 +20,12 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 
 const routes: Routes = [
-  {path: 'members', component: MembersPageComponent,  canActivate: [AuthGuard] },
+  {path: 'order-history', component: OrderHistoryComponent,  canActivate: [AuthGuard] },
+  {path: 'members', component: MembersPageComponent,  canActivate: [AuthGuard]},
 
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
@@ -48,7 +50,8 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     SearchComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    OrderHistoryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
