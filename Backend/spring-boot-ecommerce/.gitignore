@@ -38,3 +38,4 @@ build/
 .env.*
 application-secret.properties
 src/main/resources/application-secret.properties
+src/main/resources/ecommerce-keystore.p12
