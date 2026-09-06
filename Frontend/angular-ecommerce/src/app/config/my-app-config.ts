@@ -6,7 +6,7 @@ export default {
     clientId: environmentdev.auth0.clientId,
 
     authorizationParams: {
-      redirect_uri: 'http://localhost:4200'
+      redirect_uri: 'https://localhost:4200'
     }
   },
 
