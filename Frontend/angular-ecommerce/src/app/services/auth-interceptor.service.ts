@@ -7,7 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { from, lastValueFrom, Observable } from 'rxjs';
-import { environmentdev } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 export class AuthInterceptorService implements HttpInterceptor {
@@ -18,7 +18,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   }
 
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
-    const theEndpoint = environmentdev.ecommerceApiUrl + 'orders';
+    const theEndpoint = environment.ecommerceApiUrl + 'orders';
     const securedEndpoints = [theEndpoint];
 
     if (securedEndpoints.some((url) => request.urlWithParams.includes(url))) {
