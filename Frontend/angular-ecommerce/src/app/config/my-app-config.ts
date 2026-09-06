@@ -1,9 +1,9 @@
-import { environmentdev } from "src/environments/environment.development";
+import { environment } from "src/environments/environment.development";
 
 export default {
   auth: {
-    domain: environmentdev.auth0.domain,
-    clientId: environmentdev.auth0.clientId,
+    domain: environment.auth0.domain,
+    clientId: environment.auth0.clientId,
 
     authorizationParams: {
       redirect_uri: 'https://localhost:4200'
