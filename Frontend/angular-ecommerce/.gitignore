@@ -44,6 +44,7 @@ Thumbs.db
 assets
 
 environment.development.ts
+environment.qa.ts
 
 ssl-localhost
 localhost.conf
