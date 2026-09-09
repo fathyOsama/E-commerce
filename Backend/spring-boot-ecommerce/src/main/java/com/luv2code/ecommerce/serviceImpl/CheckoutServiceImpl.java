@@ -77,7 +77,7 @@ public class CheckoutServiceImpl implements CheckoutService {
     public PaymentIntent createPaymentIntent(PaymentInfo paymentInfo) throws StripeException {
 
         List<String> paymentMethodTypes = new ArrayList<>();
-        paymentMethodTypes.add("Cred");
+        paymentMethodTypes.add("card");
 
         Map<String, Object> params = new HashMap<>();
         params.put("amount", paymentInfo.getAmount());
