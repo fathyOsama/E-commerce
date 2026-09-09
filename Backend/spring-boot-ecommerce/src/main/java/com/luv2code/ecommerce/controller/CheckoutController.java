@@ -10,9 +10,13 @@ import org.springframework.http.ResponseEntity;
 import com.luv2code.ecommerce.dto.PaymentInfo;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.logging.Logger;
+
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
+
+    private Logger logger = Logger.getLogger(getClass().getName());
 
     private CheckoutService checkoutService;
 
@@ -28,9 +32,10 @@ public class CheckoutController {
         return purchaseResponse;
     }
 
-    @PostMapping("payment-intent")
+    @PostMapping("/payment-intent")
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfo paymentInfo) throws StripeException {
 
+        logger.info("paymentInfo.amount: " + paymentInfo.getAmount());
         PaymentIntent paymentIntent = checkoutService.createPaymentIntent(paymentInfo);
 
         String paymentStr = paymentIntent.toJson();
