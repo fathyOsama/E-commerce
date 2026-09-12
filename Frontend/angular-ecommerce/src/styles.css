@@ -330,7 +330,7 @@ input.au-input.au-input-xl {
 .menu-sidebar .logo {
   background: #fff;
   height: 75px;
-  padding: 0 35px;
+  padding: 0 5px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -372,7 +372,7 @@ input.au-input.au-input-xl {
 
 .navbar-sidebar .navbar-list li a {
   display: block;
-  color: #555;
+  color: #1e80db;
   font-size: 16px;
   padding: 5px 0
 }
@@ -382,7 +382,7 @@ input.au-input.au-input-xl {
 }
 
 .navbar-sidebar .navbar-list li a:hover {
-  color: #0da8e4
+  color: #0b1316
 }
 
 /*
@@ -551,7 +551,10 @@ input.au-input.au-input-xl {
  */
 
 .product-box img {
-  width: 150px;
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  display: block;
 }
 
 .items select {
@@ -565,22 +568,28 @@ input.au-input.au-input-xl {
 }
 
 .product-box {
-  margin-bottom: 60px
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  overflow: hidden;
 }
 
 .price {
-  margin: 15px 0 0;
-  font-weight: 800;
-  color: #0da8e4
+ margin-top: auto;
 }
 
 .product-box h1 {
-  font-size: 18px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-  font-weight: 600;
-  padding-top: 12px;
-  margin-bottom: 7px
+  font-size: 16px;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;   /* clamps to 2 lines instead of pushing layout */
+  min-height: 2.6em;  /* reserves space so short/long titles align the same */
 }
 
 .product-box h2 {
