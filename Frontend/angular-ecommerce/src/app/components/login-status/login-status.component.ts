@@ -13,6 +13,7 @@ export class LoginStatusComponent {
   isAuthenticated: boolean = false;
   profileJson: string | undefined;
   userEmail: string | undefined;
+  userName: string | undefined;
   storage: Storage = sessionStorage;
 
   constructor(private auth: AuthService, @Inject(DOCUMENT) private doc: Document) {}
@@ -27,9 +28,9 @@ export class LoginStatusComponent {
     this.auth.user$.subscribe(
       (user) => {
         this.userEmail = user?.email;
-         // now store the email in browser storage
-         this.storage.setItem('userEmail', JSON.stringify(this.userEmail));
-        console.log('User ID: ', this.userEmail);
+        this.userName = user?.name;              // add this
+        this.storage.setItem('userEmail', JSON.stringify(this.userEmail));
+        console.log('User Name: ', this.userName);
       }
     );
   }
